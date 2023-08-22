@@ -27,45 +27,24 @@ const TakeAPicture = () => {
 	};
 
 	return (
-		<View style={{ flex: 1 }}>
+		<View className="flex flex-1">
 			<Camera
-				style={{ flex: 1 }}
+				className="flex flex-1"
 				type={type}
 				ref={ref}
 			>
-				<View
-					style={{
-						flex: 1,
-						backgroundColor: "transparent",
-						flexDirection: "row",
-					}}
-				>
+				<View className="flex flex-1 bg-transparent flex-row">
 					{/* take */}
 					<TouchableOpacity
-						style={{
-							alignItems: "center",
-							position: "absolute",
-							bottom: "10%",
-							left: "40.5%",
-							borderRadius: 50,
-							width: 80,
-							height: 80,
-							backgroundColor: "red",
-						}}
+						className="w-[80px] h-[80px] bg-tertiary items-center absolute bottom-[10%] left-[40.5%] rounded-full"
 						onPress={_takePhoto}
 					>
-						<Text style={{ fontSize: 18, marginBottom: 10, color: "black" }}>
-							{" "}
-						</Text>
+						<Text className="mb-2.5 text-[#000] text-[18]"> </Text>
 					</TouchableOpacity>
 
 					{/* flip */}
 					<TouchableOpacity
-						style={{
-							alignSelf: "flex-end",
-							alignItems: "center",
-							backgroundColor: "red",
-						}}
+						className="self-end items-center bg-tertiary"
 						onPress={() => {
 							setType(
 								type === Camera.Constants.Type.back
@@ -74,10 +53,7 @@ const TakeAPicture = () => {
 							);
 						}}
 					>
-						<Text style={{ fontSize: 18, marginBottom: 10, color: "black" }}>
-							{" "}
-							Flip{" "}
-						</Text>
+						<Text className="mb-2.5 text-accent text-[18]"> Flip </Text>
 					</TouchableOpacity>
 				</View>
 			</Camera>

@@ -22,7 +22,7 @@ const Upload = () => {
 	};
 
 	return (
-		<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+		<View className="flex flex-1 items-center justify-center">
 			<Button
 				title="Pick an image from camera roll"
 				onPress={pickImage}
@@ -30,7 +30,7 @@ const Upload = () => {
 			{image && (
 				<Image
 					source={{ uri: image }}
-					style={{ width: 200, height: 200 }}
+					className="w-[200] h-[200]"
 				/>
 			)}
 		</View>
