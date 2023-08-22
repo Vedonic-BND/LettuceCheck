@@ -35,6 +35,7 @@ export default () => {
 								href: item.route,
 								headerStyle: { backgroundColor: item.bgColor },
 								headerTintColor: item.headTint,
+								tabBarShowLabel: false,
 							}}
 						/>
 					);
