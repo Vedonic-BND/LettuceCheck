@@ -22,10 +22,10 @@
     "extra": {
       "router": {
         "origin": false
-      },
-      "eas": {
-        "projectId": "6743bc1f-6569-46db-925f-e75ac69bdd99"
       }
+      // "eas": {
+      //   "projectId": "6743bc1f-6569-46db-925f-e75ac69bdd99"
+      // }
     },
     "android": {
       "package": "com.lcteam.lettucecheck"
