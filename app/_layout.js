@@ -16,6 +16,12 @@ export default () => {
 					}}
 				/>
 				<Stack.Screen
+					name="TakeAPicture"
+					options={{
+						headerShown: false,
+					}}
+				/>
+				<Stack.Screen
 					name="Upload"
 					options={{
 						presentation: "modal",
