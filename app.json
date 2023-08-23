@@ -18,6 +18,17 @@
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "6743bc1f-6569-46db-925f-e75ac69bdd99"
+      }
+    },
+    "android": {
+      "package": "com.lcteam.lettucecheck"
+    }
   }
 }

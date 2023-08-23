@@ -12,3 +12,7 @@ npx create-expo-app -e with-router
 
 - [Expo Router: Docs](https://expo.github.io/router)
 - [Expo Router: Repo](https://github.com/expo/router)
+
+## How to Build on android
+
+- Use [eas build -p android --profile preview] command
