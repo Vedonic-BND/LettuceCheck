@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Stack, router } from "expo-router";
+import { Link, Stack, router, Redirect } from "expo-router";
 import { Text, View, Pressable } from "react-native";
 import axios from "axios";
 import * as ImagePicker from "expo-image-picker";
@@ -29,18 +29,23 @@ const Home = () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [4, 4],
       quality: 1,
     });
 
     if (!result.canceled) {
       setImage(result.assets[0].uri);
-      router.push({
-        pathname: "/Upload",
-        params: { uri: "%4025" },
-      });
     }
   };
+
+  useEffect(() => {
+    if (image != null) {
+      router.push({
+        pathname: "/Upload",
+        params: { uri: image },
+      });
+    }
+  }, [image]);
 
   return (
     <>
