@@ -1,5 +1,10 @@
 {
   "expo": {
+    "name": "LettuceCheck",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "",
+    "jsEngine": "jsc",
     "scheme": "acme",
     "web": {
       "bundler": "metro"
