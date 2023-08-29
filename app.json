@@ -3,6 +3,10 @@
     "name": "LettuceCheck",
     "version": "1.0.0",
     "orientation": "portrait",
+    "splash": {
+      "image": "./assets/splash_screen/placeholder_splash.png",
+      "resizeMode": "contain"
+    },
     "icon": "",
     // "jsEngine": "jsc", causes an error on android
     "scheme": "acme",
