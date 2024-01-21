@@ -33,7 +33,6 @@ const Diagnosis = () => {
       });
     }
   }, [image.uri, fetchPrediction]);
-
   return (
     <View className="mt-48">
       {image && (
