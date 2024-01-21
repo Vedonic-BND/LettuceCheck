@@ -18,15 +18,42 @@ const History = () => {
   const [history, setHistory] = useState([]);
   const [showDetails, setShowDetails] = useState(false);
   const [showImage, setShowImage] = useState(null);
+  const [refreshing, setRefreshing] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
   useEffect(() => {
     onRefresh();
   }, []);
 
-  const [refreshing, setRefreshing] = useState(false);
+  const selectItem = (id) => {
+    if (selectedId === id) {
+      setShowDelete(false);
+    } else {
+      setShowDelete(true);
+      setSelectedId(id);
+    }
+  };
 
   const showSelected = (item) => {
     setShowDetails(true);
     setShowImage(item.image);
+  };
+
+  const deleteSelected = (id) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "DELETE FROM history WHERE id=?",
+        [id],
+        (_, resultSet) => {
+          console.log("Item deleted:", resultSet);
+          onRefresh();
+        },
+        (_, error) => {
+          console.error("Error fetching history:", error);
+        }
+      );
+    });
+    setShowDelete(false);
   };
 
   const onRefresh = useCallback(() => {
@@ -75,34 +102,53 @@ const History = () => {
           {history.length > 0 ? (
             history.map((item, index) => {
               return (
-                <View
-                  className="border p-2.5 rounded-md flex flex-row justify-around self-center w-full mb-2"
+                <TouchableOpacity
+                  onLongPress={() => {
+                    selectItem(index);
+                  }}
                   key={index}
                 >
-                  <View className="flex my-auto">
-                    <Text className="text-red-700 text-sm text-center">
-                      {useDate(item.date).split(",")[0]}
-                    </Text>
-                    <Text className="text-red-700 text-sm text-center">
-                      {useDate(item.date).split(",")[1]}
-                    </Text>
-                  </View>
-                  <Text className="text-red-700 text-lg h-7 my-auto">
-                    {parseFloat(item.accuracy * 100).toFixed(2)}%
-                  </Text>
-                  <Text className="text-red-700 text-lg h-7 my-auto">
-                    {item.prediction}
-                  </Text>
-                  <TouchableOpacity onPress={() => showSelected(item)}>
-                    <View className="rounded-md w-16 h-16 my-auto">
-                      <Image
-                        className="mx-auto rounded-md"
-                        source={{ uri: item.image }}
-                        style={{ width: 64, height: 64 }}
-                      />
+                  <View className="border-b-[1px] p-2.5 rounded-md flex flex-row justify-around self-center w-full">
+                    <View className="flex my-auto">
+                      <Text className="text-red-700 text-sm text-center">
+                        {useDate(item.date).split(",")[0]}
+                      </Text>
+                      <Text className="text-red-700 text-sm text-center">
+                        {useDate(item.date).split(",")[1]}
+                      </Text>
                     </View>
-                  </TouchableOpacity>
-                </View>
+                    <Text className="text-red-700 text-lg h-7 my-auto">
+                      {parseFloat(item.accuracy * 100).toFixed(2)}%
+                    </Text>
+                    <Text className="text-red-700 text-lg h-7 my-auto">
+                      {item.prediction}
+                    </Text>
+                    <TouchableOpacity onPress={() => showSelected(item)}>
+                      <View className="rounded-md w-16 h-16 my-auto">
+                        <Image
+                          className="mx-auto rounded-md"
+                          source={{ uri: item.image }}
+                          style={{ width: 64, height: 64 }}
+                        />
+                      </View>
+                    </TouchableOpacity>
+
+                    {showDelete && selectedId === index && (
+                      <View className="self-center absolute right-0 bg-[#DC143C] rounded-r-md py-7 w-32 animate-ping">
+                        <Pressable
+                          onPress={() => {
+                            deleteSelected(item.id);
+                          }}
+                          className=""
+                        >
+                          <Text className="text-lg text-[#ffffff] mx-auto px-5">
+                            Delete
+                          </Text>
+                        </Pressable>
+                      </View>
+                    )}
+                  </View>
+                </TouchableOpacity>
               );
             })
           ) : (
