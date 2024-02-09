@@ -8,7 +8,9 @@ const About = () => {
 		<>
 			<Stack.Screen options={{ title: "About" }} />
 			<View className="w-full h-full bg-accent">
-				<TopFacade />
+				<View>
+					<TopFacade width="100%" />
+				</View>
 				<View className="w-full h-[40vh]">
 					<ScrollView className="w-11/12 mx-auto">
 						<Text className="mt-5 mb-2 text-[17px]">
