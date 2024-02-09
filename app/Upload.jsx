@@ -43,44 +43,46 @@ const Upload = () => {
 	}, []);
 
 	return (
-		<View className="flex flex-1 bg-tertiary">
-			<View className="absolute top-0 w-full h-full">
-				{image && (
-					<ImageBackground
-						source={{ uri: image }}
-						className="flex flex-1"
-					>
-						<View className="absolute bottom-0 flex-1 w-full flex-row">
-							<View className="flex flex-row flex-1 w-full p-[20px] justify-between mx-[20px]">
-								<TouchableOpacity
-									onPress={pickImage}
-									className="w-[70] h-[70] items-center justify-center shadow"
-								>
-									<AntDesign
-										name="closecircle"
-										size={50}
-										color={"#BDD2B6"}
-									/>
-								</TouchableOpacity>
-								<TouchableOpacity
-									onPress={() =>
-										router.push({
-											pathname: "/Diagnosis",
-											params: { uri: image },
-										})
-									}
-									className="w-[70] h-[70] items-center justify-center shadow"
-								>
-									<AntDesign
-										name="checkcircle"
-										size={50}
-										color={"#BDD2B6"}
-									/>
-								</TouchableOpacity>
+		<View className="w-full h-full bg-accent">
+			<View className="flex flex-1 bg-tertiary">
+				<View className="absolute top-0 w-full h-full">
+					{image && (
+						<ImageBackground
+							source={{ uri: image }}
+							className="flex flex-1"
+						>
+							<View className="absolute bottom-0 flex-1 w-full flex-row">
+								<View className="flex flex-row flex-1 w-full p-[20px] justify-between mx-[20px]">
+									<TouchableOpacity
+										onPress={pickImage}
+										className="w-[70] h-[70] items-center justify-center shadow"
+									>
+										<AntDesign
+											name="closecircle"
+											size={50}
+											color={"#BDD2B6"}
+										/>
+									</TouchableOpacity>
+									<TouchableOpacity
+										onPress={() =>
+											router.push({
+												pathname: "/Diagnosis",
+												params: { uri: image },
+											})
+										}
+										className="w-[70] h-[70] items-center justify-center shadow"
+									>
+										<AntDesign
+											name="checkcircle"
+											size={50}
+											color={"#BDD2B6"}
+										/>
+									</TouchableOpacity>
+								</View>
 							</View>
-						</View>
-					</ImageBackground>
-				)}
+						</ImageBackground>
+					)}
+				</View>
 			</View>
 		</View>
 	);

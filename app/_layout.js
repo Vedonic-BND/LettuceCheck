@@ -9,7 +9,7 @@ export default () => {
 		<>
 			<Stack
 				screenOptions={{
-					headerStyle: { backgroundColor: "#798777" },
+					headerStyle: { backgroundColor: "#BDD2B6" },
 					headerTintColor: "#F8EDE3",
 				}}
 			>
@@ -28,14 +28,14 @@ export default () => {
 				<Stack.Screen
 					name="Upload"
 					options={{
-						headerStyle: { backgroundColor: "#798777" },
+						headerStyle: { backgroundColor: "#BDD2B6" },
 						headerTintColor: "#F8EDE3",
 					}}
 				/>
 				<Stack.Screen
 					name="Diagnosis"
 					options={{
-						headerStyle: { backgroundColor: "#798777" },
+						headerStyle: { backgroundColor: "#BDD2B6" },
 						headerTintColor: "#F8EDE3",
 						headerLeft: () => (
 							<TouchableOpacity
